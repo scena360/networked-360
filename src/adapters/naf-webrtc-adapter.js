@@ -21,9 +21,12 @@ class WebRtcPeer {
 
   offer(options) {
     var self = this;
-    // reliable: false - UDP
+    //  ordered: false, maxRetransmits: 0 - UDP
     this.setupChannel(
-      this.pc.createDataChannel(this.channelLabel, { reliable: false })
+      this.pc.createDataChannel(this.channelLabel, {  
+        ordered: false,
+        maxRetransmits: 0
+      })
     );
 
     // If there are errors with Safari implement this:
