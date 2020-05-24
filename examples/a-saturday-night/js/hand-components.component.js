@@ -1,12 +1,12 @@
 /**
-*
-* Hand Controls component
-* Auto-detect appropriate controllers
-*
-* @property {left/right} Hand mapping
-*/
+ *
+ * Hand Controls component
+ * Auto-detect appropriate controllers
+ *
+ * @property {left/right} Hand mapping
+ */
 AFRAME.registerComponent('hand-components', {
-  schema: {default: 'left'},
+  schema: { default: 'left' },
 
   update: function () {
     var el = this.el;
@@ -14,9 +14,9 @@ AFRAME.registerComponent('hand-components', {
     var controlConfiguration = {
       hand: hand,
       model: false,
-      rotationOffset: hand === 'left' ? 90 : -90
+      rotationOffset: hand === 'left' ? 90 : -90,
     };
     el.setAttribute('vive-controls', controlConfiguration);
     el.setAttribute('oculus-touch-controls', controlConfiguration);
-  }
+  },
 });

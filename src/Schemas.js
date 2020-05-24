@@ -1,7 +1,6 @@
 /* global NAF */
 
 class Schemas {
-
   constructor() {
     this.schemaDict = {};
     this.templateCache = {};
@@ -10,11 +9,8 @@ class Schemas {
   createDefaultSchema(name) {
     return {
       template: name,
-      components: [
-        'position',
-        'rotation',
-      ]
-    }
+      components: ['position', 'rotation'],
+    };
   }
 
   add(schema) {
@@ -22,7 +18,9 @@ class Schemas {
       this.schemaDict[schema.template] = schema;
       var templateEl = document.querySelector(schema.template);
       if (!templateEl) {
-        NAF.log.error(`Template el not found for ${schema.template}, make sure NAF.schemas.add is called after <a-scene> is defined.`);
+        NAF.log.error(
+          `Template el not found for ${schema.template}, make sure NAF.schemas.add is called after <a-scene> is defined.`,
+        );
         return;
       }
       if (!this.validateTemplate(schema, templateEl)) {
@@ -40,7 +38,9 @@ class Schemas {
       if (this.templateExistsInScene(template)) {
         this.add(this.createDefaultSchema(template));
       } else {
-        NAF.log.error(`Template el for ${template} is not in the scene, add the template to <a-assets> and register with NAF.schemas.add.`);
+        NAF.log.error(
+          `Template el for ${template} is not in the scene, add the template to <a-assets> and register with NAF.schemas.add.`,
+        );
       }
     }
     return this.templateCache[template].firstElementChild.cloneNode(true);
@@ -76,7 +76,10 @@ class Schemas {
       NAF.log.error(`Template for ${schema.template} is not a <template> tag. Instead found: ${el.tagName}`);
       return false;
     } else if (!this.templateHasOneOrZeroChildren(el)) {
-      NAF.log.error(`Template for ${schema.template} has more than one child. Templates must have one direct child element, no more. Template found:`, el);
+      NAF.log.error(
+        `Template for ${schema.template} has more than one child. Templates must have one direct child element, no more. Template found:`,
+        el,
+      );
       return false;
     } else {
       return true;

@@ -6,7 +6,7 @@
 AFRAME.registerComponent('toggle-ownership', {
   schema: {
     speed: { default: 0.01 },
-    direction: { default: 1 }
+    direction: { default: 1 },
   },
 
   init() {
@@ -14,7 +14,7 @@ AFRAME.registerComponent('toggle-ownership', {
     this.onKeyUp = this.onKeyUp.bind(this);
     document.addEventListener('keyup', this.onKeyUp);
 
-    NAF.utils.getNetworkedEntity(this.el).then((el) => {
+    NAF.utils.getNetworkedEntity(this.el).then(el => {
       if (NAF.utils.isMine(el)) {
         that.updateColor();
       } else {
@@ -34,7 +34,7 @@ AFRAME.registerComponent('toggle-ownership', {
 
       el.addEventListener('ownership-changed', e => {
         clearTimeout(timeout);
-        console.log(e.detail)
+        console.log(e.detail);
         if (e.detail.newOwner == NAF.clientId) {
           //same as listening to 'ownership-gained'
         } else if (e.detail.oldOwner == NAF.clientId) {
@@ -43,7 +43,7 @@ AFRAME.registerComponent('toggle-ownership', {
           that.updateOpacity(0.8);
           timeout = setTimeout(() => {
             that.updateOpacity(0.5);
-          }, 200)
+          }, 200);
         }
       });
     });
@@ -54,7 +54,7 @@ AFRAME.registerComponent('toggle-ownership', {
       return;
     }
 
-    if(NAF.utils.takeOwnership(this.el)) {
+    if (NAF.utils.takeOwnership(this.el)) {
       this.el.setAttribute('toggle-ownership', { direction: this.data.direction * -1 });
       this.updateColor();
     }
@@ -83,5 +83,5 @@ AFRAME.registerComponent('toggle-ownership', {
       y: THREE.Math.radToDeg(rotation.y),
       z: THREE.Math.radToDeg(rotation.z),
     });
-  }
+  },
 });

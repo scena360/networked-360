@@ -21,18 +21,22 @@
     "test": "karma start ./tests/unit/karma.conf.js",
     "test:firefox": "karma start ./tests/unit/karma.conf.js --browsers Firefox",
     "test:chrome": "karma start ./tests/unit/karma.conf.js --browsers Chrome",
-    "watch": "watchify src/index.js -o examples/build.js -v"
+    "watch": "watchify src/index.js -o examples/build.js -v",
+    "prettier": "prettier --config \"./.prettierrc\" --check \"./{src,examples}/**/*.{js,html,json}\"",
+    "format": "npm run prettier -- --write; npm run lint -- --fix"
   },
   "repository": "networked-aframe/networked-aframe",
   "dependencies": {
     "buffered-interpolation": "^0.2.5",
     "express": "^4.17.1",
+    "prettier": "^2.0.5",
     "socket.io": "^2.3.0"
   },
   "devDependencies": {
-    "aframe": "~1.0.0",
     "@babel/core": "~7.8.3",
     "@babel/preset-env": "~7.8.3",
+    "aframe": "~1.0.0",
+    "babel-eslint": "^10.1.0",
     "babel-loader": "8.0.0-beta.1",
     "browserify": "^14.0.0",
     "browserify-css": "^0.15.0",

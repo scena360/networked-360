@@ -2,17 +2,17 @@
 
 AFRAME.registerComponent('networked-scene', {
   schema: {
-    serverURL: {default: '/'},
-    app: {default: 'default'},
-    room: {default: 'default'},
-    connectOnLoad: {default: true},
-    onConnect: {default: 'onConnect'},
-    adapter: {default: 'socketio'}, // See https://github.com/networked-aframe/networked-aframe#adapters for list of adapters
-    audio: {default: false}, // Only if adapter supports audio
-    debug: {default: false},
+    serverURL: { default: '/' },
+    app: { default: 'default' },
+    room: { default: 'default' },
+    connectOnLoad: { default: true },
+    onConnect: { default: 'onConnect' },
+    adapter: { default: 'socketio' }, // See https://github.com/networked-aframe/networked-aframe#adapters for list of adapters
+    audio: { default: false }, // Only if adapter supports audio
+    debug: { default: false },
   },
 
-  init: function() {
+  init: function () {
     var el = this.el;
     this.connect = this.connect.bind(this);
     el.addEventListener('connect', this.connect);
@@ -37,28 +37,28 @@ AFRAME.registerComponent('networked-scene', {
     return NAF.connection.connect(this.data.serverURL, this.data.app, this.data.room, this.data.audio);
   },
 
-  checkDeprecatedProperties: function() {
+  checkDeprecatedProperties: function () {
     // No current
   },
 
-  setupNetworkAdapter: function() {
+  setupNetworkAdapter: function () {
     var adapterName = this.data.adapter;
     var adapter = NAF.adapters.make(adapterName);
     NAF.connection.setNetworkAdapter(adapter);
     this.el.emit('adapter-ready', adapter, false);
   },
 
-  hasOnConnectFunction: function() {
+  hasOnConnectFunction: function () {
     return this.data.onConnect != '' && window[this.data.onConnect];
   },
 
-  callOnConnect: function() {
+  callOnConnect: function () {
     NAF.connection.onConnect(window[this.data.onConnect]);
   },
 
-  remove: function() {
+  remove: function () {
     NAF.log.write('networked-scene disconnected');
     this.el.removeEventListener('connect', this.connect);
     NAF.connection.disconnect();
-  }
+  },
 });
