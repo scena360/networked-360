@@ -1,5 +1,4 @@
 class ChildEntityCache {
-
   constructor() {
     this.dict = {};
   }

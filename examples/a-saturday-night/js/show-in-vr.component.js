@@ -1,24 +1,24 @@
 AFRAME.registerComponent('show-in-vr', {
   schema: {},
 
-  init: function() {
+  init: function () {
     this.scene = document.querySelector('a-scene');
     this.exitedVR();
   },
 
-  play: function() {
+  play: function () {
     this.addEventListeners();
   },
 
-  pause: function() {
+  pause: function () {
     this.removeEventListeners();
   },
 
-  addEventListeners: function() {
+  addEventListeners: function () {
     this.scene.addEventListener('enter-vr', this.enteredVR);
   },
 
-  removeEventListeners: function() {
+  removeEventListeners: function () {
     this.scene.addEventListener('exit-vr', this.exitedVR);
   },
 
@@ -28,5 +28,5 @@ AFRAME.registerComponent('show-in-vr', {
 
   exitedVR: function () {
     this.el.setAttribute('visible', false);
-  }
+  },
 });

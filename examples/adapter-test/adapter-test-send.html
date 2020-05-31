@@ -1,8 +1,8 @@
 <html>
   <head>
-    <meta charset="utf-8">
+    <meta charset="utf-8" />
     <title>Dev Example — Networked-Aframe</title>
-    <meta name="description" content="Dev Example — Networked-Aframe">
+    <meta name="description" content="Dev Example — Networked-Aframe" />
 
     <script src="https://aframe.io/releases/0.7.0/aframe.min.js"></script>
     <script src="/build.js"></script>
@@ -23,8 +23,7 @@
         var clients = NAF.connection.getConnectedClients();
 
         var firstClient;
-        for (firstClient in clients)
-          break;
+        for (firstClient in clients) break;
 
         console.error(clients);
         console.error(firstClient);
@@ -35,7 +34,6 @@
     </script>
   </head>
   <body>
-
     <div>
       <p>Sender. Open first receiver to test.</p>
     </div>
@@ -44,14 +42,16 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.4.5/socket.io.min.js"></script>
     <script src="/easyrtc/easyrtc.js"></script>
-    
-    <a-scene embedded networked-scene="
+
+    <a-scene
+      embedded
+      networked-scene="
       room: dev;
       debug: true;
       adapter: wseasyrtc;
-    ">
-
-    <!-- <a-scene embedded networked-scene="
+    "
+    >
+      <!-- <a-scene embedded networked-scene="
       room: dev;
       debug: true;
       adapter: easyrtc;

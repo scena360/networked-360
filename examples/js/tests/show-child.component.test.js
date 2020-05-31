@@ -5,49 +5,47 @@ var naf = require('../../src/NafIndex');
 
 require('../../src/components/show-child.component');
 
-suite('show-child', function() {
+suite('show-child', function () {
   var scene;
   var entity;
   var comp;
 
   function initScene(done) {
     var opts = {};
-    opts.entity = '<a-entity id="test-entity" show-child="2"><a-entity id="zero"></a-entity><a-entity id="one"></a-entity><a-entity id="two"></a-entity></a-entity>';
+    opts.entity =
+      '<a-entity id="test-entity" show-child="2"><a-entity id="zero"></a-entity><a-entity id="one"></a-entity><a-entity id="two"></a-entity></a-entity>';
     scene = helpers.sceneFactory(opts);
     naf.utils.whenEntityLoaded(scene, done);
   }
 
-  setup(function(done) {
-    initScene(function() {
+  setup(function (done) {
+    initScene(function () {
       entity = document.querySelector('#test-entity');
       comp = entity.components['show-child'];
       done();
     });
   });
 
-  suite('Setup', function() {
-
-    test('creates entity', function() {
+  suite('Setup', function () {
+    test('creates entity', function () {
       assert.isOk(entity);
     });
 
-    test('creates component', function() {
+    test('creates component', function () {
       assert.isOk(comp);
     });
   });
 
-  suite('Schema', function() {
-
-    test('Returns correct index', function() {
+  suite('Schema', function () {
+    test('Returns correct index', function () {
       var result = entity.getAttribute('show-child');
 
       assert.strictEqual(result, 2);
     });
   });
 
-  suite('hideAll', function() {
-
-    test('Hides correct children', function() {
+  suite('hideAll', function () {
+    test('Hides correct children', function () {
       var child0 = document.querySelector('#zero');
       var child1 = document.querySelector('#one');
       var child2 = document.querySelector('#two');
@@ -63,7 +61,7 @@ suite('show-child', function() {
       assert.isFalse(result2);
     });
 
-    test('Show correct child', function() {
+    test('Show correct child', function () {
       var child0 = document.querySelector('#zero');
       var child1 = document.querySelector('#one');
       var child2 = document.querySelector('#two');
@@ -81,9 +79,8 @@ suite('show-child', function() {
     });
   });
 
-  suite('show', function() {
-
-    test('Handles index too large', function() {
+  suite('show', function () {
+    test('Handles index too large', function () {
       var child0 = document.querySelector('#zero');
       var child1 = document.querySelector('#one');
       var child2 = document.querySelector('#two');

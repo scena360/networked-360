@@ -4,11 +4,11 @@ AFRAME.registerComponent('show-child', {
     default: 0,
   },
 
-  update: function() {
+  update: function () {
     this.show(this.getData());
   },
 
-  show: function(index) {
+  show: function (index) {
     if (index < this.el.children.length) {
       this.hideAll();
       this.el.children[index].setAttribute('visible', true);
@@ -17,10 +17,10 @@ AFRAME.registerComponent('show-child', {
     }
   },
 
-  hideAll: function() {
+  hideAll: function () {
     var el = this.el;
     for (var i = 0; i < el.children.length; i++) {
       el.children[i].setAttribute('visible', false);
     }
-  }
+  },
 });

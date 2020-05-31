@@ -1,15 +1,15 @@
 AFRAME.registerComponent('spawner', {
   schema: {
     template: { default: '' },
-    keyCode: { default: 32 }
+    keyCode: { default: 32 },
   },
 
-  init: function() {
+  init: function () {
     this.onKeyUp = this.onKeyUp.bind(this);
-    document.addEventListener("keyup", this.onKeyUp);
+    document.addEventListener('keyup', this.onKeyUp);
   },
 
-  onKeyUp: function(e) {
+  onKeyUp: function (e) {
     if (this.data.keyCode === e.keyCode) {
       var el = document.createElement('a-entity');
       el.setAttribute('networked', 'template:' + this.data.template);
@@ -17,5 +17,5 @@ AFRAME.registerComponent('spawner', {
       var scene = this.el.sceneEl;
       scene.appendChild(el);
     }
-  }
+  },
 });

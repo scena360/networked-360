@@ -1,7 +1,6 @@
 /*eslint no-console: "off" */
 
 class NafLogger {
-
   constructor() {
     this.debug = false;
   }

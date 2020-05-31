@@ -5,24 +5,24 @@
  */
 AFRAME.registerComponent('confetti', {
   schema: {
-    areaWidth: {default: 4},
-    areaHeight: {default: 4},
-    sourceHeight: {default: 3},
-    wavesNumber: {default: 50},
-    waveSize: {default: 50},
-    waveSeparation: {default: 10}
+    areaWidth: { default: 4 },
+    areaHeight: { default: 4 },
+    sourceHeight: { default: 3 },
+    wavesNumber: { default: 50 },
+    waveSize: { default: 50 },
+    waveSeparation: { default: 10 },
   },
 
   init: function () {
     var data = this.data;
-    var confettiContainerEl = document.createElement('a-entity')
+    var confettiContainerEl = document.createElement('a-entity');
     var i;
     var j;
     var color;
     var colors = ['red', 'blue', 'green'];
-    var redConfettiEl = this.redConfettiEl = document.createElement('a-entity');
-    var blueConfettiEl = this.blueConfettiEl = document.createElement('a-entity');
-    var greenConfettiEl = this.greenConfettiEl = document.createElement('a-entity');
+    var redConfettiEl = (this.redConfettiEl = document.createElement('a-entity'));
+    var blueConfettiEl = (this.blueConfettiEl = document.createElement('a-entity'));
+    var greenConfettiEl = (this.greenConfettiEl = document.createElement('a-entity'));
     var colorEls = {};
     redConfettiEl.setAttribute('geometry', 'buffer: false');
     blueConfettiEl.setAttribute('geometry', 'buffer: false');
@@ -33,7 +33,7 @@ AFRAME.registerComponent('confetti', {
     colorEls = {
       red: redConfettiEl,
       blue: blueConfettiEl,
-      green: greenConfettiEl
+      green: greenConfettiEl,
     };
     this.el.appendChild(confettiContainerEl);
     confettiContainerEl.appendChild(redConfettiEl);
@@ -45,7 +45,7 @@ AFRAME.registerComponent('confetti', {
         confettiEl = document.createElement('a-entity');
         confettiEl.setAttribute('material', {
           color: color,
-          side: 'double'
+          side: 'double',
         });
         confettiEl.setAttribute('geometry', {
           primitive: 'plane',
@@ -53,12 +53,12 @@ AFRAME.registerComponent('confetti', {
           width: 0.005,
           height: 0.015,
           skipCache: true,
-          mergeTo: '#' + color + 'Confetti'
+          mergeTo: '#' + color + 'Confetti',
         });
         confettiEl.setAttribute('position', {
           x: Math.random() * data.areaWidth - data.areaWidth / 2,
-          z: Math.random() * data.areaHeight  - data.areaHeight / 2,
-          y: data.sourceHeight + i * data.waveSeparation
+          z: Math.random() * data.areaHeight - data.areaHeight / 2,
+          y: data.sourceHeight + i * data.waveSeparation,
         });
         confettiEls.push(confettiEl);
         confettiContainerEl.appendChild(confettiEl);
@@ -95,8 +95,8 @@ AFRAME.registerComponent('confetti', {
       confettiEl.setAttribute('position', {
         x: currentPosition.x,
         y: currentPosition.y - delta / 10000,
-        z: currentPosition.z
+        z: currentPosition.z,
       });
     }
-  }
+  },
 });

@@ -2,7 +2,6 @@
 var ChildEntityCache = require('./ChildEntityCache');
 
 class NetworkEntities {
-
   constructor() {
     this.entities = {};
     this.childCache = new ChildEntityCache();
@@ -53,7 +52,7 @@ class NetworkEntities {
       creator: entityData.creator,
       owner: entityData.owner,
       networkId: entityData.networkId,
-      persistent: entityData.persistent
+      persistent: entityData.persistent,
     };
 
     entity.setAttribute('networked', networkData);
@@ -113,7 +112,7 @@ class NetworkEntities {
           childId,
           childEntityData,
           'Existing entity:',
-          this.getEntity(childId)
+          this.getEntity(childId),
         );
         continue;
       }
@@ -188,16 +187,16 @@ class NetworkEntities {
     }
   }
 
-  forgetEntity(id){
+  forgetEntity(id) {
     delete this.entities[id];
     this.forgetPersistentFirstSync(id);
   }
 
-  getPersistentFirstSync(id){
+  getPersistentFirstSync(id) {
     return this._persistentFirstSyncs[id];
   }
 
-  forgetPersistentFirstSync(id){
+  forgetPersistentFirstSync(id) {
     delete this._persistentFirstSyncs[id];
   }
 
