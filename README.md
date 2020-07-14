@@ -1,7 +1,7 @@
 <img src="http://i.imgur.com/7ddbE0q.gif" width="300">
 
 
-Networked-Aframe
+Networked-Aframe | @scena360/networked-360
 =======
 
 <a href="https://travis-ci.org/networked-aframe/networked-aframe"><img src="https://img.shields.io/travis/networked-aframe/networked-aframe.svg" alt="Build Status"></a>

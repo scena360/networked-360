@@ -1,5 +1,5 @@
 {
-  "name": "@srvice/networked-aframe",
+  "name": "@scena360/networked-360",
   "version": "0.7.1",
   "description": "A web framework for building multi-user virtual reality experiences.",
   "homepage": "https://scena360.com",
@@ -25,7 +25,7 @@
     "prettier": "prettier --config \"./.prettierrc\" --check \"./{src,examples}/**/*.{js,html,json}\"",
     "format": "npm run prettier -- --write; npm run lint -- --fix"
   },
-  "repository": "srvice/networked-aframe",
+  "repository": "scena360/networked-360",
   "dependencies": {
     "buffered-interpolation": "^0.2.5",
     "express": "^4.17.1",
